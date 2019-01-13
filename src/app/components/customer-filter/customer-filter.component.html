@@ -1,0 +1,118 @@
+<span>Filter by:</span>
+<mat-form-field>
+  <mat-select #options (selectionChange)="setOption(options.value)">
+    <mat-option value="none">
+      None
+    </mat-option>
+    <mat-option value="price">
+      Price
+    </mat-option>
+    <mat-option value="type">
+      Type
+    </mat-option>
+    <mat-option value="date">
+      Date
+    </mat-option>
+    <mat-option value="id">
+      Coupon Id
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<br>
+<div *ngIf="currentFilterOption=='price'">Filter by price : {{ priceFilterValue }}
+  <br>
+  <mat-slider min="1" max="250" step="1" value="100" [(ngModel)]="priceFilterValue"></mat-slider><a (click)="filterByPrice()">Search!</a>
+</div>
+
+<div *ngIf="currentFilterOption=='type'">
+  Select a Category:
+  <mat-form-field>
+    <mat-select #typeSelect (selectionChange)="filterByType(typeSelect.value)">
+      <mat-option value="RESTERAUNTS">
+        Resteraunts
+      </mat-option>
+      <mat-option value="ELECTRICITY">
+        Electricity
+      </mat-option>
+      <mat-option value="FOOD">
+        Food
+      </mat-option>
+      <mat-option value="HEALTH">
+        Health
+      </mat-option>
+      <mat-option value="SPORTS">
+        Sports
+      </mat-option>
+      <mat-option value="CAMPING">
+        Camping
+      </mat-option>
+      <mat-option value="TRAVELING">
+        Traveling
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+</div>
+
+
+<div *ngIf="currentFilterOption=='date'">
+  Enter a Date:
+  <mat-form-field>
+    <input matInput type="date" [(ngModel)]="dateFilterValue"><br>
+  </mat-form-field>
+    <a (click)="filterByDate()">Search!</a>
+</div>
+
+<div *ngIf="currentFilterOption=='id'">
+  Enter a specific Coupon Id:
+  <mat-form-field>
+    <input matInput type="number" [(ngModel)]="idFilterValue" (keyup)="filterById()">
+  </mat-form-field>
+  <br>
+
+</div>
+<div *ngIf="currentFilterOption=='compid'">
+  Enter a specific Id:
+  <mat-form-field>
+    <input matInput type="number" [(ngModel)]="idFilterValue" (keyup)="filterById()">
+  </mat-form-field>
+  <br>
+
+</div>
+<div *ngIf="currentFilterOption=='name1'">
+  Enter a specific Id:
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="idFilterValue" (keyup)="filterById()">
+  </mat-form-field>
+  <br>
+
+</div>
+
+
+<!-- <div *ngIf="currentFilterOption=='date'">
+  Enter a Date:
+  <input type="date" [(ngModel)]="dateFilterValue">
+  <a (click)="filterByDate()">Search!</a>
+</div>
+
+
+<div *ngIf="currentFilterOption=='id'">
+  Enter a specific Coupon Id:
+  <input type="number" [(ngModel)]="idFilterValue" (keyup)="filterById()">
+  <br>
+
+</div>
+<div *ngIf="currentFilterOption=='compid'">
+  Enter a specific Id:
+  <input type="number" [(ngModel)]="idFilterValue" (keyup)="filterById()">
+  <br>
+
+</div>
+<div *ngIf="currentFilterOption=='name1'">
+  Enter a specific Id:
+  <input type="text" [(ngModel)]="idFilterValue" (keyup)="filterById()">
+  <br>
+
+</div> -->

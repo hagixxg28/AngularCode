@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div>
+  <app-filter-general (ChildEvent)="changeArray()"></app-filter-general>
+  <table class="w3-table w3-blue" *ngIf="allCustomers">
+    <tr>
+      <th>Title</th>
+      <th>Message</th>
+      <th>Start Date</th>
+      <th>Expiration Date</th>
+      <th>Price</th>
+      <th>Amount</th>
+      <th>Type</th>
+      <th>Id</th>
+      <th>CompId</th>
+      <th>Image</th>
+    </tr>
+    <tr *ngFor="let c of marketArray; let i = index" (click)="toggleCoupon(i)">
+      <td>{{ c.title }}</td>
+      <td>{{ c.message }}</td>
+      <td>{{ c.startDate }}</td>
+      <td>{{ c.endDate }}</td>
+      <td>{{ c.price }}</td>
+      <td>{{ c.amount }}</td>
+      <td>{{ c.type }}</td>
+      <td>{{ c.id }}</td>
+      <td>{{ c.compId }}</td>
+      <td>
+        <img src="">
+      </td>
+      <td *ngIf="isCurrentIndex(i)">
+        <button mat-raised-button color="primary" *ngIf="isCustomerAvailable()" (click)="purchase()">Purchase</button>
+        <button mat-raised-button color="primary" *ngIf="isAdmin()" (click)="adminRemoveCoupon()">Remove</button>
+      </td>
+    </tr>
+  </table>
+</div>

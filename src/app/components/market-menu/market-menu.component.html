@@ -1,0 +1,18 @@
+<mat-nav-list>
+    <a mat-list-item routerLink="/Home">Market</a>
+    <!-- If Logged in--> <a mat-list-item routerLink="MyCouopns" *ngIf="userDetails.type=='CUSTOMER'">My Coupons</a>
+    <!-- If Logged in--> <a mat-list-item routerLink="CompanyCoupons" *ngIf="userDetails.type=='COMPANY'">My Company
+        Coupons</a>
+    <!-- If company--><a mat-list-item routerLink="Add" *ngIf="userDetails.type=='COMPANY'">Add</a>
+    <!-- If admin--><a mat-list-item routerLink="Admin/Details" *ngIf="userDetails.type=='ADMIN'">Admin</a>
+    <!-- If admin--><a mat-list-item routerLink="AddUser" *ngIf="userDetails.type=='ADMIN'">Add User</a>
+    <a mat-list-item routerLink="ControlPanel" *ngIf="userDetails.type=='COMPANY'||userDetails.type=='CUSTOMER'">Control
+        Panel</a>
+</mat-nav-list>
+<!-- <a mat-list-item routerLink="Home">Home</a>
+<a mat-list-item routerLink="About">About</a>
+<a *ngIf="!isLoggedIn()" mat-list-item routerLink="Login">Login</a>
+<a *ngIf="isLoggedIn()" mat-list-item href="Login" (click)="logout()">Logout</a> -->
+<br><br><br>
+
+<router-outlet (ChildEvent)="changeDetails($event)"></router-outlet>

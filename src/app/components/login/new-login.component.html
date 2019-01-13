@@ -1,0 +1,32 @@
+<div>
+<form #loginForm="ngForm">
+  <mat-form-field>
+    <input matInput type="number" #idData="ngModel" required placeholder="Enter your id..." name="id" [(ngModel)]="userDetails.id ">
+  </mat-form-field>
+  <br><br>
+  <mat-form-field>
+    <input matInput type="password" #passwordData="ngModel" required placeholder="Enter your password.." name="password"
+      [(ngModel)]="userDetails.password ">
+  </mat-form-field>
+  <br><br>
+
+
+  <mat-form-field>
+    <mat-select #typeData="ngModel" required name="type" [(ngModel)]="userDetails.type" placeholder="I'm a:">
+      <mat-option value="ADMIN">
+        Admin
+      </mat-option>
+      <mat-option value="CUSTOMER">
+        Customer
+      </mat-option>
+      <mat-option value="COMPANY">
+        Company
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br><br>
+  <button mat-raised-button color="primary" [disabled]="loginForm.form.invalid" (click)="login()"> Log In </button>
+
+
+</form>
+</div>

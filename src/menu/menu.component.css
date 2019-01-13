@@ -1,0 +1,12 @@
+a {
+    color: blue;
+    font-size: x-large;
+    display: block;
+    margin: 10px;
+}
+
+.the-chosen-one {
+    color: deeppink;
+    font-weight: bold;
+    font-family: Arial;
+}

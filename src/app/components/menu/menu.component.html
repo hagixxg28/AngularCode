@@ -1,0 +1,13 @@
+<div>
+
+    <a routerLink="Home" routerLinkActive="the-chosen-one">Home</a>
+
+    <a routerLink="About" routerLinkActive="the-chosen-one">About</a>
+
+    <a *ngIf="!isLoggedIn()" routerLink="Login" routerLinkActive="the-chosen-one">Login</a>
+
+
+
+    <a *ngIf="isLoggedIn()" href="javascript:void" (click)="logout()" routerLinkActive="the-chosen-one">Logout</a>
+
+</div>

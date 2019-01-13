@@ -1,0 +1,75 @@
+<div *ngIf="currentCoupon">
+
+  <span> Current Coupon: {{ currentCoupon.id }} </span>
+  <br> <span (click)="toggle('title')"> Title: {{ currentCoupon.title }} </span>
+  <mat-form-field *ngIf="toggleTitle">
+    <input matInput type="text" #titleData="ngModel" placeholder="Enter a new title" name="title" [(ngModel)]="updateCoupon.title ">
+  </mat-form-field>
+
+  <br> <span (click)="toggle('message')"> Message: {{ currentCoupon.message }} </span>
+  <mat-form-field *ngIf="toggleMessage">
+    <input matInput type="text" #messageData="ngModel" placeholder="Enter a new message" name="message" [(ngModel)]="updateCoupon.message ">
+  </mat-form-field>
+
+
+  <br> <span (click)="toggle('date')"> Expiration Date: {{ currentCoupon.endDate }} </span>
+  <mat-form-field *ngIf="toggleDate">
+    <input matInput type="date" #endDateData="ngModel" [min]="now" placeholder="Enter a new date" name="endDate" [(ngModel)]="updateCoupon.endDate ">
+  </mat-form-field>
+
+  <br> <span (click)="toggle('price')"> Price: {{ currentCoupon.price }} </span>
+  <mat-form-field *ngIf="togglePrice">
+    <input matInput type="number" #priceData="ngModel" placeholder="Enter a new price" name="price" [(ngModel)]="updateCoupon.price ">
+  </mat-form-field>
+
+  <br> <span (click)="toggle('amount')"> Amount: {{ currentCoupon.amount }} </span>
+  <mat-form-field *ngIf="toggleAmount">
+    <input matInput type="number" #amountData="ngModel" placeholder="Enter a new amount" name="amount" [(ngModel)]="updateCoupon.amount ">
+  </mat-form-field>
+
+
+  <br> <span (click)="toggle('image')"> Image: </span>
+  <mat-form-field *ngIf="toggleImage">
+    <input matInput type="text" #imageData="ngModel" placeholder="Enter image url" name="image" [(ngModel)]="updateCoupon.image ">
+  </mat-form-field>
+  <br> <span (click)="toggle('type')"> Type: {{ currentCoupon.type }} </span>
+  <!-- <select *ngIf="toggleType" #typeData="ngModel" name="type" [(ngModel)]="updateCoupon.type ">
+    <option value="RESTERAUNTS">Resteraunts</option>
+    <option value="ELECTRICITY">Electricity</option>
+    <option value="FOOD">Food</option>
+    <option value="HEALTH">Health</option>
+    <option value="SPORTS">Sports</option>
+    <option value="CAMPING">Camping</option>
+    <option value="TRAVELING">Traveling</option>
+  </select> -->
+  <mat-form-field *ngIf="toggleType">
+    <mat-select #typeData="ngModel" required name="type" [(ngModel)]="updateCoupon.type" placeholder="Type:">
+      <mat-option value="RESTERAUNTS">
+        Resteraunts
+      </mat-option>
+      <mat-option value="ELECTRICITY">
+        Electricity
+      </mat-option>
+      <mat-option value="FOOD">
+        Food
+      </mat-option>
+      <mat-option value="HEALTH">
+        Health
+      </mat-option>
+      <mat-option value="SPORTS">
+        Sports
+      </mat-option>
+      <mat-option value="CAMPING">
+        Camping
+      </mat-option>
+      <mat-option value="TRAVELING">
+        Traveling
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+  <br>
+  <button mat-raised-button color="primary" (click)="emitUpdate()">Save Changes</button>
+</div>

@@ -1,0 +1,50 @@
+<mat-form-field>
+  <mat-select #options [(ngModel)]="AddOption" placeholder="Add a:">
+    <mat-option value="company">
+      Company
+    </mat-option>
+    <mat-option value="customer">
+      Customer
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<form #addUserForm="ngForm">
+
+  <br> <span> Id: </span>
+  <br>
+  <mat-form-field>
+    <input matInput required type="number" #idData="ngModel" placeholder="Enter a new id" name="id" [(ngModel)]="newCompany.id ">
+  </mat-form-field>
+  <br> <span> Name: </span>
+  <br>
+  <mat-form-field>
+    <input matInput required minlength="3" type="text" #nameData="ngModel" placeholder="Enter a name" name="name"
+      [(ngModel)]="newCompany.compName ">
+  </mat-form-field>
+  <span *ngIf="nameData?.errors?.minlength && nameData.touched">Name too short...</span>
+
+  <br> <span> Password: </span>
+  <br>
+  <mat-form-field>
+    <input matInput required minlength="3" type="text" #passwordData="ngModel" placeholder="Enter a password" name="password"
+      [(ngModel)]="newCompany.password ">
+  </mat-form-field>
+  <span *ngIf="passwordData?.errors?.minlength && passwordData.touched">Password too short...</span>
+
+
+  <div *ngIf="AddOption=='company'">
+    <br> <span> Email: </span>
+    <br>
+    <mat-form-field>
+      <input matInput required minlength="4" type="type" #emailData="ngModel" placeholder="Enter an email" name="email"
+        [(ngModel)]="newCompany.email ">
+    </mat-form-field>
+    <span *ngIf="messageData?.errors?.minlength && messageData.touched">Email too short...</span>
+  </div>
+  <br>
+  <button mat-raised-button color="primary" *ngIf="AddOption=='company'" [disabled]="addUserForm.form.invalid" (click)="addCompany()">Add
+    Company</button>
+  <button mat-raised-button color="primary" *ngIf="AddOption=='customer'" [disabled]="addUserForm.form.invalid" (click)="addCustomer()">Add
+    Customer</button>
+</form>

@@ -1,0 +1,42 @@
+<form #controlPanelForm="ngForm">
+
+  <div *ngIf="userDetails.name"> Current name: {{userDetails.name}} </div>
+  <mat-form-field>
+    <input matInput type="text" required #nameData="ngModel" placeholder="Enter a new name" name="name" [(ngModel)]="newDetails.name ">
+  </mat-form-field>
+  <button mat-raised-button color="primary" [disabled]="nameData.errors" (click)="updateNameUser()"> Update Your name
+  </button>
+  <br><br>
+
+
+
+  <mat-form-field>
+    <input matInput type="text" required #passwordData="ngModel" placeholder="Enter a new password" name="password"
+      [(ngModel)]="newDetails.password ">
+  </mat-form-field>
+  <button mat-raised-button color="primary" [disabled]="passwordData.errors||passwordConfirm.errors" (click)="updatePasswordUser() ">
+    Update
+    Your
+    password </button>
+  <br>
+  <mat-form-field>
+    <input matInput type="text" required #passwordConfirmData="ngModel" placeholder="Confirm password" name="password"
+      [(ngModel)]="passwordConfirm">
+  </mat-form-field>
+  <br><br>
+
+  <div *ngIf="company.email">
+    <span>Current email: {{company.email}} </span>
+    <br>
+    <mat-form-field>
+      <input matInput type="email" email required #emailData="ngModel" placeholder="Enter a new email" name="email"
+        [(ngModel)]="newDetails.email ">
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="emailData.errors" (click)="updateEmail()"> Update Your email
+    </button>
+  </div>
+
+
+
+
+</form>

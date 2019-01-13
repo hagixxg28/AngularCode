@@ -1,0 +1,18 @@
+input, button {
+    width: 250px;
+    font-size: medium;
+    margin: 10px;
+}
+
+span {
+    margin: 10px;
+    padding: 1px;
+    text-align: left;
+    font-size: large ;
+}
+
+/* .ng-invalid.ng-touched:not(form) {
+    background-color: pink;
+    border: 2px solid red;
+    color: red;
+} */

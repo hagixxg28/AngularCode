@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<app-customer-filter [hidden]="!firstCoupon" (ChildEvent)="changeArray()"></app-customer-filter>
+<div *ngIf="!firstCoupon&&userDetails.type=='ADMIN'">This Customer does not have any coupons</div>
+<div *ngIf="!firstCoupon&&userDetails.type=='CUSTOMER'">You don't have any coupons</div>
+<br>
+<br>
+<table class="w3-table w3-blue" *ngIf="firstCoupon">
+  <tr>
+    <th>Title</th>
+    <th>Message</th>
+    <th>Expiration Date</th>
+    <th>Price</th>
+    <th>Type</th>
+    <th>Id</th>
+    <th>CompId</th>
+    <th>Image</th>
+  </tr>
+  <tr *ngFor="let c of myCoupons; let i = index" (click)="toggleCoupon(i)">
+    <td>{{ c.title }}</td>
+    <td>{{ c.message }}</td>
+    <td>{{ c.endDate }}</td>
+    <td>{{ c.price }}</td>
+    <td>{{ c.type }}</td>
+    <td>{{ c.id }}</td>
+    <td>{{ c.compId }}</td>
+    <td>
+      <img src="">
+    </td>
+    <span *ngIf="isCurrentIndex(i)&&userDetails.type=='ADMIN'">
+      <button mat-raised-button color="primary" (click)="deleteCoupon()">Remove</button>
+    </span>
+  </tr>
+</table>
+<br>
+<br>
+<app-update-form *ngIf="userDetails.type=='ADMIN'" (updateEmitter)="updateCouopn($event)"></app-update-form>

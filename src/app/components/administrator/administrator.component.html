@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<button mat-raised-button color="warn" [disabled]="!companySelected" (click)="switchToCustomerView()">Customers</button>
+<button mat-raised-button color="warn" [disabled]="companySelected" (click)="switchToCompanyView()">Companies</button>
+<br>
+<span *ngIf="!companySelected">Customers</span>
+<span *ngIf="companySelected">Companies</span>
+<div>
+  <table class="w3-table w3-blue" *ngIf="GeneralArray">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th *ngIf="companySelected">Email</th>
+    </tr>
+    <tr *ngFor="let x of GeneralArray; let i = index" (click)="toggleUser(i)">
+      <td>{{ x.id }}</td>
+      <td *ngIf="x.custName">{{ x.custName }}</td>
+      <td *ngIf="x.compName">{{ x.compName }}</td>
+      <td *ngIf="x.email">{{ x.email }}</td>
+      <td *ngIf="isCurrentIndex(i)">
+        <button mat-raised-button color="warn" (click)="RemoveUser()">Remove</button>
+      </td>
+    </tr>
+  </table>
+</div>
+<br>
+<router-outlet *ngIf="currentUser"></router-outlet>
+<button mat-raised-button color="warn" (click)="toggleView()">Switch between Coupons/Details </button>
+<!-- <app-genaral-control-panel (Event)="refresh()" *ngIf="currentUser"></app-genaral-control-panel> -->

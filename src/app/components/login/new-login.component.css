@@ -1,0 +1,8 @@
+div {
+   
+    position: fixed;
+    top: 25%;
+    left: 30%;
+    margin-top: -100px;
+    margin-left: -200px;
+}

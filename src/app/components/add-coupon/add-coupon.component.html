@@ -1,0 +1,87 @@
+<form #addCouponForm="ngForm">
+
+  <br> <span> Id: </span>
+  <br>
+  <mat-form-field>
+    <input matInput required type="number" #idData="ngModel" placeholder="Enter a new id" name="id" [(ngModel)]="newCoupon.id ">
+  </mat-form-field>
+
+  <br> <span> Title: </span>
+  <br>
+  <mat-form-field>
+    <input matInput required minlength="3" type="text" #titleData="ngModel" placeholder="Enter a new title" name="title"
+      [(ngModel)]="newCoupon.title ">
+  </mat-form-field>
+  <span *ngIf="titleData.errors?.minlength && titleData.touched">Title too short...</span>
+
+  <br> <span> Message: </span>
+  <br>
+  <mat-form-field>
+    <input matInput required minlength="4" type="text" #messageData="ngModel" placeholder="Enter a new message" name="message"
+      [(ngModel)]="newCoupon.message ">
+  </mat-form-field>
+  <span *ngIf="messageData.errors?.minlength && messageData.touched">Message too short...</span>
+
+
+  <br> <span> Expiration Date: </span>
+  <br>
+  <mat-form-field>
+    <input matInput required type="date" #endDateData="ngModel" [min]="now" placeholder="Enter a new date" name="endDate"
+      [(ngModel)]="newCoupon.endDate ">
+  </mat-form-field>
+
+  <br> <span> Price: </span>
+  <br>
+  <mat-form-field>
+    <input matInput required min="1" type="number" #priceData="ngModel" placeholder="Enter a new price" name="price"
+      [(ngModel)]="newCoupon.price ">
+  </mat-form-field>
+  <span *ngIf="priceData.errors?.min && priceData.touched">Price can't be below 1</span>
+
+  <br> <span> Amount: </span>
+  <br>
+  <mat-form-field>
+    <input matInput required min="1" type="number" #amountData="ngModel" placeholder="Enter a new amount" name="amount"
+      [(ngModel)]="newCoupon.amount ">
+  </mat-form-field>
+  <span *ngIf="amountData.errors?.min && amountData.touched">Amount can't be below 1</span>
+
+  <br> <span> Image: </span>
+  <br>
+  <mat-form-field>
+    <input matInput required type="text" #imageData="ngModel" placeholder="Enter image url" name="image" [(ngModel)]="newCoupon.image ">
+  </mat-form-field>
+
+  <br><br>
+
+
+  <mat-form-field>
+    <mat-select #typeData="ngModel" required name="type" [(ngModel)]="newCoupon.type" placeholder="Type:">
+      <mat-option value="RESTERAUNTS">
+        Resteraunts
+      </mat-option>
+      <mat-option value="ELECTRICITY">
+        Electricity
+      </mat-option>
+      <mat-option value="FOOD">
+        Food
+      </mat-option>
+      <mat-option value="HEALTH">
+        Health
+      </mat-option>
+      <mat-option value="SPORTS">
+        Sports
+      </mat-option>
+      <mat-option value="CAMPING">
+        Camping
+      </mat-option>
+      <mat-option value="TRAVELING">
+        Traveling
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <br>
+  <button mat-raised-button color="primary" [disabled]="addCouponForm.form.invalid" (click)="addCoupon()">Add Coupon</button>
+</form>
